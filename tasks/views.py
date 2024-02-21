@@ -50,10 +50,10 @@ class TaskRetrieveUpdateDelete(generics.GenericAPIView):
             }
         return Response(data=response, status=status.HTTP_200_OK)
     
-    def put(self, request:Request, task_id:int):
+    def patch(self, request:Request, task_id:int):
         task = get_object_or_404(models.Task, id=task_id)
 
-        serializer = self.serializer_class(instance=task, data=request.data)
+        serializer = self.serializer_class(instance=task, data=request.data, partial=True)
 
         if serializer.is_valid():
             serializer.save()
