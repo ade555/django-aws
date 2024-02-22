@@ -78,5 +78,5 @@ def test_delete_task(api_client):
 
     # Check if task does not exist
     response_update = api_client.delete(f"/api/tasks/modify/{task_id + 0.2}/", data=payload, format="json")
-    logger.info(f"updated task with id {task_id + 0.2}")
+    logger.info(f"udeleted task with id {task_id + 0.2}")
     assert response_update.status_code == 404
